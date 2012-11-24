@@ -1,0 +1,8 @@
+*.aux
+*.blg
+*.log
+*.dvi
+*.bbl
+imgs-orig
+outline
+drafts
