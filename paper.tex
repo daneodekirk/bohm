@@ -43,18 +43,14 @@
 \section{Introduction}
 
   Quantum mechanics is famed for introducing uncertainty to a once certain world.
-  %The causal determinism of everyday experience is lost within its statistical foundation.
   The de Broglie-Bohm theory rectifies this with a causal interpretation of quantum mechanics by 
     prescribing definite trajectories to particles without sacrificing predictive accuracy.
-  %[TODO: THIS IS DUPLICATED. SAY IT ONCE]
   This is a stark contrast to the Copenhagen interpretation where a system's behavior is nondeterministic.  
   The ramifications of the de Broglie-Bohm interpretation remedy the concept of wave-particle duality since
     quantum systems can be predicted without losing the particles.
   This gives rise to a narrative of the particles that can be discussed, analyzed and is not hidden nor ignored as it with 
     the Copenhagen interpretation.
 
-%  Solving the Schrödinger equation with the wave function expressed in Euler form yields a result that describes 
-%    these trajectories and how the quantum potential emerges.
   The de Broglie-Bohm theory proposes that a system of $n$ particles has trajectories described by 
 
   \begin{equation} \label{eq:trajectories}
@@ -90,20 +86,13 @@
   \begin{equation} \label{eq:quantumpotential}
     Q = -\frac{\hbar^2}{2m}\frac{\nabla^2 \sqrt{P}}{\sqrt{P}}
   \end{equation}
-  %Refer to reference \cite{bohm} for a more in-depth derivation of these equations.
-  %[todo: put this somewhere else?] 
   For the remainder of this paper, the constants $m$ and $\hbar$ are set equal to one.
     
   Bohm recognized when evaluating equation (\ref{eq:bohm1}) at the classical limit, $ \hbar \rightarrow 0 $, 
     that $S$ is the solution to the classical Hamilton-Jacobi equations of motion \cite{bohm}.
-  %When the classical limit is approached the function $Q$ approaches zero as it is dependent on $\hbar$.
   The Hamilton-Jacobi equations are accurate for classical systems, however,
     are incomplete for the quantum realm.
   Specifically, the function $Q$ approaches zero classically and only exists at the quantum limit.
-  %This is reminiscent of the theory of special relativity, in which the Taylor expansion of energy yields the traditional
-  %  equation for kinetic energy as an infinite series; thereby, turning the traditional equation into a basic approximation.
-  %In terms of de Broglie-Bohm theory, solving the Schrödinger equation in Euler form is analogous to the Taylor expansion and 
-  %  the Hamilton-Jacobi equations of motion are the basic approximation.
   This function $Q$ is known as the quantum potential and is the difference between the quantum and classical Hamilton-Jacobi equations of motion.
   It also plays a significant role in the behavior of de Broglie-Bohm particle trajectories.
   Bohm quotes the following theorem \cite{bohm} 
@@ -117,22 +106,18 @@
   \end{quotation}
   Applying this theorem yields two results.
   First, equation (\ref{eq:bohm1}) can be rewritten in terms of a particle's velocity since $\nabla S(x)$ is equal to the velocity $\mathbf{v}$.
-    %, where the particles $m$ is equal to one. 
   P is therefore consistent with the probability density for these particles,
     where $P\mathbf{v}$ represents the mean current of particles.
-  %When this substitution is made the function $P$ [TODO: BECOMES IS BAD WORD CHOICE. 'IS' IS BETTER] becomes consistent with the probability density for these particles, where $P\mathbf{v}$ represents the mean current of particles.
   Equation (\ref{eq:bohm1}) then represents the conservation of probability.
   Second, equation (\ref{eq:bohm2}) is consistent with the Hamilton-Jacobi for a system of such particles.
   Unlike its classical counterpart, however, the particles are affected by two types of potentials: 
     the classical potential $V$ and the quantum potential $Q$.
-  %This is the basic foundation for the de Broglie-Bohm interpretation of quantum mechanics.
 
   To summarize, solving the Schrödinger equation with a wave function in Euler form results in a set of equations.
   These set of equations are equal to the Hamilton-Jacobi equations of motion at the classical limit 
     and introduce the new quantum potential $Q$ at the quantum limit.
   Furthermore, they imply a set of calculable trajectories for each particle in the system;
     defining a narrative that is nonexistent in the Copenhagen interpretation.
-  %These trajectories are governed by both the classical potential $V$ the quantum potential $Q$.
 
   In order to calculate Bohmian trajectories of a particle, its $x$ and $y$ position must be determined at any given time $t$.
   The $x$ component of the particle's position can be found via 
@@ -142,18 +127,10 @@
   where $k_x$ is the velocity in the $x$ direction \cite{guay}.
   This simplifies the calculation by allowing us to focus specifically on the $y$ coordinate realizing that 
     the $x$ coordinate is simply proportional to the time $t$.
-  %In terms of plotting the trajectories the change in $y$ position over time must be found out, while the 
-  %  change in the $x$ position is a known, equal spacing between each interval of time.
   The $y$ coordinate of a particle at time $t$ is found by feeding the wave function $\Psi$ that describes the system into equation (\ref{eq:trajectories}).
   With initial random values of $t_0$ and $y_0$, equation (\ref{eq:trajectories}) is evaluated over iterations of times $t$ between $t_i$ and $t_f$ to calculate the 
     particle's $y$ coordinate at each specific time $t$.
   Compiling this solution with the $x$ coordinate yields the trajectory of a particle with initial position $x_0$ and $y_0$.
-  %When these calculations are iterated over an interval of time, specific coordinates for each time $t$ is found and consequentially a trajectory.
-  %As mentioned previously, the Runge-Kutta algorithm was used for two reasons: the error analysis \cite{rungekutta} and the results display trajectories
-  %  that follow the theoretical characteristics of Bohmian trajectories. 
-  %The second reason is more subjective then the first, however, nonetheless important.
-  %If, for example, the Runge-Kutta algorithm smoothed out trajectories and removed the effects of the quantum potential it would not be used.
-  %Fortunately, a fourth-order Runge-Kutta algorithm works for our desired results.
   
   In this paper a fourth-order Runge-Kutta is implemented to compute the Bohmian trajectories defined by equation (\ref{eq:trajectories}) \cite{dowsa}.
   Interfering wave packets are investigated for two related systems.
@@ -162,30 +139,6 @@
   The specific packages used are NumPy, SymPy and Matplotlib which provide numerical functions, symbolic math and plotting functions respectively.
   Full understanding of these packages is not necessary to understand or run the Python code; 
     although some background knowledge of their capabilities, purposes and implementations could prove helpful.
-
-  %numerically since the Runge-Kutta is more accurate when compared to alternative methods [TODO: EXPAND ON THIS. CITE THE METHODS WHY ONE IS CHOSEN OVER THE OTHER] \cite{rungekutta}; specifically in the context of Bohmian trajectories.
-
-%  The results of Bohmian mechanics should be indistinguishable from quantum mechanics and this has been the case insofar.
-%  Even though Bohmian mechanics introduce trajectories - specific position and velocity for each particle - the theory's [TODO: DUPLICATE. SAY IT ONCE] predictions
-%    are still statistical in nature even though the system's behavior is causal.
-%  It is debated whether this is a weakness in the theory since all the theory provides is a different means to the end, 
-%    however this discussion is not the purpose of this paper.
-%
-%  Bohmian trajectories will first be calculated for the double-slit experiment.
-%  This will provide a foundation for the Python implementation since the results of the double-slit experiment are well established.
-%  Once the results are corroborated the same technique will be applied to [TODO: THIS IS INCORRECT. RELATED NOT SEPARATE SYSTEMS] two interfering wave packets; thereby finding the Bohmian trajectories for this system.
-%  A fourth-order Runge-Kutta method will be implemented to solve equation (\ref{eq:trajectories}) numerically since the Runge-Kutta is more accurate when compared to alternative methods [TODO: EXPAND ON THIS. CITE THE METHODS WHY ONE IS CHOSEN OVER THE OTHER] \cite{rungekutta}; specifically in the context of Bohmian trajectories.
-%  %The results of these calculations will be directly affected by the decision to use Runge-Kutta over alternatives.
-%  A three-dimensional representation of the wave functions for both systems will be graphed to clarify how Bohmian trajectories behave in these systems. 
-%  This will provide a [TODO: UNIQUE IS A BAD WORD CHOICE] unique perspective on the underlying wave functions that eventually determine the path of the Bohmian trajectories.
-%  Furthermore, the trajectories for both systems will be plotted and discussed.
-%
-%  A final note, the Python programming language is chosen because it is free, open-sourced and capable of necessary numerical analysis.
-%  In order to achieve the calculation of Bohmian trajectories a set of packages will be utilized: NumPy, SymPy and Matplotlib.
-%  All of which will be necessary dependencies of the Python code.
-%  These packages provide powerful utilities that will be used to graph the wave functions and calculate the Bohmian trajectories for both systems.
-%  Note that full understanding of these packages is not necessary to understanding or run the Python code; although some background information on their capabilities, purposes and implementations could prove helpful.
-
 
 
 
@@ -304,7 +257,6 @@
   Calculating the graphs takes approximately 26.4, 28.3 and 66.3 seconds respectively.
   The initial distribution is a random uniform distribution across each slits.
   The Python class that generates these plots is shown in appendix \ref{appendix:bohmian-trajectories}.
-  %Remember, $t$ is proportional to the position $x$ of the particle.
 
   \begin{figure}[!ht]
     \centerline{\includegraphics[scale=.3]{./imgs/200-bohmian-trajectories-85e4ecb6df758e2b.png}}
@@ -314,7 +266,6 @@
     \label{fig:trajsym}
   \end{figure}
 
-  %  [TODO: REMOVE SYM. FIGURE]
   \begin{figure}[!ht]
     \centerline{\includegraphics[scale=.3]{./imgs/200-bohmian-trajectories-3506320ca33960b0.png}}
     \caption{
@@ -377,8 +328,6 @@
 
   The wave packets are assumed to be Gaussian in nature and do not spread with time \cite{chaloupka}.
   Equation (\ref{eq:trajectories}) is used again to calculate the Bohmian trajectories for the wave function $\Psi$ that describes this system.
-%  The only significant difference between this approach and that of the double-slit experiment is the wave function $\Psi$ and its behavior over time.
-%  Besides $\Psi$, the general calculation of the Bohmian trajectories for interfering wave packets is the same.
   The contour plot shown in Figure \ref{fig:interfering} illustrates the wave function $\Psi$ at times $t=-15$, $t=0$ and $t=15$ seconds 
     as the wave packets $\psi_A$ and $\psi_B$ propagate towards each other on intersecting paths.
   Initially, at $t=-15s$, the two wave packets are separate entities described by a single wave function traversing orthogonal paths.
@@ -407,8 +356,6 @@
   \begin{figure}[ht]
     {\centering \includegraphics[scale=.5]{./imgs/100-bohmian-trajectories-b06f0d2cb50ffe27.png} \\}
     \caption{
-      % 60 particles, 1/100 dt and took 208.995403051 seconds
-      % 100 particles, 1/100 dt and took 355.211433172 seconds
       Bohmian trajectories plotted for wave function $\Psi$ describing two interfering Gaussian wave packets.
       100 particles are initially distributed with equidistant spacing on the $t=-15s$ axis.
       The bottom and top packets are offset by a 1/2 step to prevent symmetry over the $y=0$ axis.
