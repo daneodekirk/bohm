@@ -17,7 +17,7 @@
 
 \title{Python calculations of Bohmian trajectories}
 \author{Dane Odekirk} 
-\date{October 28th, 2012}                                         
+\date{December 12th, 2012}                                         
 
 
 \begin{document} 
@@ -208,13 +208,7 @@
     \label{fig:double-slit}
   \end{figure}
 
-  %[TODO: SHOW FIGURES OF BOTH SETUPS INSTEAD OF THE EQUATIONS HERE. THE DOUBLE SLIT AND DOUBLE REFLECTION]
   When a particle goes through either slit its wave function is described by $\psi_A(\mathbf{r},t)$ and $\psi_B(\mathbf{r},t)$ for slits A and B respectively.
-  %The symmetry of the system allows us to make the [TODO: ASSUMPTION IS NOT GOOD. REMOVE EQUATION. STATE IT BUT RECALL THAT REALITY IS NOT SYMMETRICAL] following assumption
-  %\begin{equation}
-  %  \psi_A(\mathbf{r_x},\mathbf{r_y},\mathbf{r_z},t) = \psi_B(\mathbf{r_x}, -\mathbf{r_y},\mathbf{r_z},t)
-  %\end{equation}
-  %which illustrates that each partial wave function $\psi_A$ and $\psi_B$ are transforms of each other over the x-axis.
   The wave that leaves the slit has an exact solution described by the following time-dependent equation \cite{guay-double-slit}
   \begin{equation}
     \label{eq:partial}
@@ -231,18 +225,12 @@
     \Psi(\mathbf{r},t) = N [\psi_A + \psi_B ]
   \end{equation}
   where $\psi_A$ and $\psi_B$ are defined by equation (\ref{eq:partial}) and $N$ is a normalization constant.
-  % [TODO: REMOVE THIS SENTENCE] There is nothing significantly unique about this wave function as it follows the same pattern of any typical time-dependent wave equation in quantum 
-    %mechanics.
 
   Figures \ref{fig:2d0} and \ref{fig:2d1} illustrate the time-dependence of the wave function $\Psi$.
   Both the real and imaginary parts of of the wave function, described by equation (\ref{eq:total-wave-function}), are plotted at times $t=0$ and $t=1$. 
-  %Please refer to the appendix for a larger version of this image and all further images in this article.
   Both Figures \ref{fig:2d0} and \ref{fig:2d1}, span $y$ values from -13 to 13 with a spacing of 0.01, accounting for 2600 points to be plotted.
   Good consistency is found between these figures and figures in reference \cite{guay-double-slit} on which these graphs are based.
   The code to produce these figures is shown in appendix \ref{appendix:real-imag}.
- %   being the first step in corroborating the correctness of the Python implementation of the wave function.
- % The code necessary to generate these figures are coupled with the figures themselves in the appendix. 
- % There are a few things to note. 
 
     \begin{figure}[!ht]
       \centerline{\includegraphics[scale=.3]{./imgs/double-slit-real-imaginary-parts-t0.png}}
@@ -263,41 +251,27 @@
 
   According to equation (\ref{eq:trajectories}) the imaginary part of the wave function plays an important role in guiding particles along their 
     Bohmian trajectories.
- % As shown in Figures \ref{fig:2d0} and \ref{fig:2d1}, there is a [TODO: WHAT DOES THIS MEAN? IS IT IMPORTANT UGH TO KEEP?] 
- %   change in the imaginary part of the wave function over time and it is this change that [TODO: WHAT DOES THIS MEAN? KEEP IT?] directly affects the trajectories.
   For a more revealing perspective, the imaginary part of the wave function is plotted three-dimensionally over time in Figure \ref{fig:3d}
     with a color grading representing the gradient along its surface.
   Note that the $x$ axis has been replaced by the time $t$ as they are proportional to one another.
-  %This reasoning will be explained more explicitly shortly.
   Values for $y$ once again span between -13 and 13 with a spacing of 0.01 and
     values for $t$ span between 0 and 1 with a spacing of 0.01.
   These values are chosen on a rather subjective basis of time - as decreasing the spacing increases the computation time.
   Generating Figure \ref{fig:3d} takes approximately 1.35 seconds with the given values.
   The code to generate this graph is shown in appendix \ref{appendix:imaginary-surface}.
-  %[TODO: REMOVE THIS SENTENCE] Unfortunately, only one view can be shown in this article, but the graph itself can be manipulated to different points of view by running its corresponding Python code.
-  %[TODO: MAKE THIS FIGURE AND OTHERS BIGGER. REMOVE APPENDIX]
 
   Figure \ref{fig:3d} clarifies the underlying mechanisms that govern the Bohmian trajectories.
   Notice the imaginary parts of Figures \ref{fig:2d0} and \ref{fig:2d1} agree with the cross-section parallel to $x$ of Figure \ref{fig:3d} at times $t=0$ and $t=1$.
-  %The imaginary part of the wave function for different times $t$ can also be found within Figure \ref{fig:3d} by merely taking the cross-section of the surface for different values of $t$.
-  %More importantly, however, is how much this Figure \ref{fig:3d} highlights how Bohmian trajectories behave.
-  %Metaphorically, if one would imagine pushing a ball from $t=0$ towards $t=1$, the path the ball
-  %  would take would be entirely dependent on the surface it travels.
   The crest and troughs of the wave function govern the direction of the particle. 
   Higher crests require higher energy while the troughs require lower energy.
   The trajectories follow the path of lowest energy.
   Not depicted in Figure \ref{fig:3d} is the quantum potential $Q$ that also affects the trajectories - it is plotted in reference \cite{bohm}. 
   When $Q$ is plotted three-dimensionally, it also illustrates the crests and troughs that govern the particle's trajectory \cite{bohm}.
-  %In the case of Figure \ref{fig:3d}, the crests and troughs at $t=1$ would represent where most particles would find themselves by the time they reached the screen.
 
   Of more interest, however, is the concept of the trajectory. 
   The narrative behind the Copenhagen interpretation is one that focuses on predictions and observations while ignoring how the observation came to be.
   With the de Broglie-Bohm interpretation, the prediction is still valid however the particle's trajectory, or the history of how it arrived at the observation, 
     can still be calculated and discussed.
-  %The changing landscape of the surface would result in trajectories that do not simply go straight, but instead wind their ways around the crests.
-  %The predicted trajectories based on analyzing the shape and surface of Figure \ref{fig:3d} insofar agree with the characteristics of Bohmian trajectories.
-  %[TODO: EXPAND ON THIS BELOW]
-  %There is an assumption here, but it is one of the many put forth by the Bohmian interpretation.
   For example, the de Broglie-Bohm interpretation shows that a particle does in fact go through a specific slit; either one or the other.
   It does not have a predictive measure to calculate which slit the particle will go through prior to reaching the slits, however, does define 
     a historical trajectory that leads to a single, specific slit.
@@ -319,53 +293,41 @@
 
   Figures \ref{fig:trajsym}, \ref{fig:trajnonsym} and \ref{fig:trajnorm} plot the Bohmian trajectories for particles in a double slit setup; 
     numerically solved via Python.
-  %The double slit experiment are chosen because the results are known.
   There are two main commonalities between these three figures.
   First, an interference pattern emerges in all three as expected. 
   This is promising since the double slit experiment does produce physical interference patterns that cannot be contradicted by the calculation.
   Second, all three figures exhibit trajectories that do not cross paths, which is an intrinsic characteristic of Bohmian trajectories.
-  %If either of the latter criteria failed then the results and theory behind the trajectories would need revision.
-  %Fortunately, the characteristics of the theoretical plots resemble their experimental counterparts.
 
   All the trajectories plotted in Figures \ref{fig:trajsym}, \ref{fig:trajnonsym} and \ref{fig:trajnorm} were calculated with the following constants:
     a distance between slits of 2 units, a slit width of 1 unit and an initial $x$ velocity of 0.1 units per second.
-  Calculating the graphs takes approximately 4.3, 4.3 and 10 seconds respectively.
-  The initial distribution is created by randomly creating 500 particles within the slits and sampling only the desired number of particles. 
+  The time spacing $\Delta t$ between calculated points is 1/100 seconds.
+  Calculating the graphs takes approximately 26.4, 28.3 and 66.3 seconds respectively.
+  The initial distribution is a random uniform distribution across each slits.
   The Python class that generates these plots is shown in appendix \ref{appendix:bohmian-trajectories}.
   %Remember, $t$ is proportional to the position $x$ of the particle.
 
-  %[TODO: REMOVE ALL FIGURES THAT ARE SYMMTRICAL. REALITY IS NOT SYMMETRICAL. DIFFERENT SLIT WITDTHS..ETC..]
   \begin{figure}[!ht]
-    \centerline{\includegraphics[scale=.3]{./imgs/20-particles-uniform-1.png}}
+    \centerline{\includegraphics[scale=.3]{./imgs/200-bohmian-trajectories-85e4ecb6df758e2b.png}}
     \caption{
-      20 particle trajectories with a random normal distribution.
-      Note the interference pattern is already taking form.
+      200 particle trajectories with a random uniform distribution over each slit.
     }
     \label{fig:trajsym}
   \end{figure}
 
-  %Figure \ref{fig:trajsym} illustrates 50 trajectories calculated from a symmetrical, Gaussian distribution over each slit.
-  %The symmetry is forced by calculating a random, Gaussian set over the first slit and mirroring these 25 points over the $y=0$ axis.
-  %This gives the quintessential image of Bohmian trajectories for the double slit experiment (the original image can be found in reference \cite{philippidis}).
-  %The trajectories follow distinct paths that differ from their classical counterparts. 
-  %The trajectories are symmetrical about the axis between the slits and never cross each other's paths. 
-  %There is also a definite interference pattern emerging when the time $t$ is one second. 
-
   %  [TODO: REMOVE SYM. FIGURE]
   \begin{figure}[!ht]
-    \centerline{\includegraphics[scale=.3]{./imgs/20-particles-uniform-3.png}}
+    \centerline{\includegraphics[scale=.3]{./imgs/200-bohmian-trajectories-3506320ca33960b0.png}}
     \caption{
-      20 particle trajectories with an random uniform distribution.
-      Again, the interference pattern is already taking form.
+      200 particle trajectories with an random uniform distribution over each slit. 
+      There is no difference between this and Figure \ref{fig:trajsym} except the initial position of the particles.
     }
     \label{fig:trajnonsym}
   \end{figure}
 
   \begin{figure}[!ht]
-    \centerline{\includegraphics[scale=.5]{./imgs/50-particles-uniform.png}}
+    \centerline{\includegraphics[scale=.5]{./imgs/500-bohmian-trajectories-693872239e5414e4.png}}
     \caption{
-      50 particle trajectories with a random, uniform, non-symmetrical distribution over each slit.
-      An interference pattern still occurs.
+      500 particle trajectories with a random, uniform distribution over each slit.
     }
     \label{fig:trajnorm}
   \end{figure}
@@ -375,23 +337,9 @@
   There is a visual departure from classical trajectories in Figures \ref{fig:trajsym}, \ref{fig:trajnonsym} and \ref{fig:trajnorm} as well.
   Classically, if a particle starts at the slit with a distinct position and velocity it will continue along the direction of the
     particle's velocity in a straight line unless acted upon by an external force.
-  %The depicted Bohmian interpretation do follow this classical description however not in classical form.
   The trajectories depicted do not follow straight paths and appear to veer at specific points.
-  %These detours appear to be what causes the once straight paths to merge together and funnel themselves towards the screen
-  %  in an what resembles an interference pattern.
   The cause of these detours is the quantum potential given by equation (\ref{eq:quantumpotential}).
-  %The most convenient way of illustrating the effect is by evaluating the surface depicted in Figure \ref{fig:3d}.
-  %If one imagines how a ball would travel along the surface, from the slits to the detector, the various rifts and valleys would detour
-  %  the ball from a straight trajectory.
-  %Note that Figure 3 does not depict the quantum potential which is the actual cause of the detours; however does provide a method for understanding the
-  %  basic notion of why the particles follow the paths they do.
-  %The particles are in fact acted upon by both the regular potential and quantum potential.
-  %If the quantum potential existed classically as $\hbar \rightarrow 0$, the paths plotted in these figures would represent how objects would traverse classically.
-  It provides a force, in the quantum realm, on the particles that govern the particles into trajectories foreign to classical behavior.
-  %The quantum potential, however, is zero at the classical limit and therefore the trajectories plotted are foreign to classical behavior.
-  %The only differing factor is the initial distribution of the particles: regarding either the number or position of the particles.
-  Figures \ref{fig:trajsym} and \ref{fig:trajnonsym} also show an interference pattern taking shape even with just 20 particles in the system,
-    which becomes a clearer interference pattern as more particles are introduced into the system.
+  It provides a force, in the quantum realm, that governs the particles into trajectories foreign to classical behavior.
 
   \begin{figure}
     \centerline{\includegraphics[scale=4.5]{./imgs/double-slit-results.jpg}}
@@ -401,7 +349,6 @@
     \label{fig:double-slit-results}
   \end{figure}
 
-  %[TODO: TALK ABOUT THE SCREEN RESULTS OF THE DOUBLE SLIT EXPERIMENT]
   When this experiment is performed, Figure \ref{fig:double-slit-results} illustrates what a screen registers at different times.
   Both the Copenhagen and de Broglie-Bohm interpretations predict this interference pattern.
   The Copenhagen interpretation, however, ignores an explanation of the particle itself until it is measured by the screen, 
@@ -409,8 +356,8 @@
   As stated previously, a fundamental distinction is the de Broglie-Bohm notion that a single particle goes through a specific slit.
   The probability wave used in the Copenhagen interpretation does not quite offer this distinction and
     suggests that the particle goes through both slits and interferes with itself.
-  The trajectories in Figures \ref{fig:trajsym} and \ref{fig:trajnonsym} would be representative of a screen at time $b$ in Figure \ref{fig:double-slit-results}, 
-    while Figure \ref{fig:trajnorm} would be representative of a screen at time $c$.
+  The trajectories in Figures \ref{fig:trajsym} and \ref{fig:trajnonsym} would be representative of a screen at time $c$ in Figure \ref{fig:double-slit-results}, 
+    while Figure \ref{fig:trajnorm} would be representative of a screen at time $d$.
 
 \section{Secondary setup and trajectories}
 
@@ -434,7 +381,6 @@
 %  Besides $\Psi$, the general calculation of the Bohmian trajectories for interfering wave packets is the same.
   The contour plot shown in Figure \ref{fig:interfering} illustrates the wave function $\Psi$ at times $t=-15$, $t=0$ and $t=15$ seconds 
     as the wave packets $\psi_A$ and $\psi_B$ propagate towards each other on intersecting paths.
-  %The contour plot demonstrates that these packets are three-dimensional in nature with their peak and highest curvature at the center.
   Initially, at $t=-15s$, the two wave packets are separate entities described by a single wave function traversing orthogonal paths.
   At $t=0$, the wave packets are completely superimposed upon each other forming an interference pattern with nodes and anti-nodes as the two Gaussian wave packets interfere.
   As the wave packets continue to propagate the interference pattern diminishes until eventually the wave packets are separate entities again;
@@ -442,132 +388,52 @@
   The code to generate Figure \ref{fig:interfering} is shown in appendix \ref{appendix:contour-plot}.
   Code to generate a continuous animation of this contour plot is shown in appendix \ref{appendix:contour-plot-animated}.
 
-%    [TODO: EXPLAIN EXPLAIN EXPLAIN THIS PLOT AND RELATE IT TO THE FIGURE SETUP]
   \begin{figure}[!ht]
-    \centerline{\includegraphics[width=\paperwidth]{./imgs/contour-plot.png}}
+    \centerline{\includegraphics[scale=.5]{./imgs/contour-plot.png}}
     \caption{
       Contour drawing of two interfering wave packets at times $t=-15s$, $t=0s$ and $t=15s$.
     }
     \label{fig:interfering}
   \end{figure}
 
-%  The wave function that describes this system is given by the following equation \cite{chaloupka}
-%  \begin{equation} 
-%    \label{eq:interfering}
-%    \begin{aligned}
-%    \psi_A(\mathbf{r_x},\mathbf{r_y},t) = \exp \Bigg[  & i(k_0(\mathbf{r_x}\cos{\theta}-\mathbf{r_y}\sin{\theta})-ct)  \\
-%                                                     &  -(\mathbf{r_x}\cos{\theta}-\mathbf{r_y}\sin{\theta})-ct)^2/a \\
-%                                                     &  -(\mathbf{r_x}\sin{\theta}+\mathbf{r_y}\cos{\theta})^2/a  \Bigg]
-%    \end{aligned}
-%  \end{equation}
-%  where $a$, $c$, $\theta$ and $k_0$ [TODO: WHERE THESE ARE WHAT?].
-  %The variables $x$, $y$ and $t$ signify the positional coordinates and time evolution of the wave.
-  %However, this only describes one of the wave packets $\psi_A$.
-  %Given that both wave packets in Figure \ref{fig:interfering} show physical and behavioral symmetry over the center of the y-axis 
-  %  the following symmetrical property can once again be assumed to find $\psi_B$
-  %  [TODO: REMOVE SYM. EQUATION AGAIN]
-  %\begin{equation}
-  %  \psi_A(\mathbf{r_x},\mathbf{r_y},\mathbf{r_z},t) = \psi_B(\mathbf{r_x}, -\mathbf{r_y},\mathbf{r_z},t)
-  %\end{equation}
-  %just as in the double slit experiment.
-  %Thereby giving equations for both wave packets $\psi_A$ and $\psi_B$ that yield an equation for the entire wave function of system via equation (\ref{eq:total-wave-function}).
-
   Calculating the Bohmian trajectories for the system yields the trajectories plotted in Figure \ref{fig:interfering-trajectories}.
-  %The calculations were done under specific conditions. 
-  The time $t$ spans from -15 seconds to 15 seconds with iterations of $0.1s$.
-  The initial distribution of the particles is a random sampling of $y$ coordinates between -30 and 30 and initiate at time $t=-15s$.
-  Plotting 20 trajectories takes approximately 6.2 seconds to compute.
-  Once again the calculations find the $y$ coordinate of each particle since the $x$ coordinate is proportional to the time $t$.
-  The Python code to generate Figure \ref{fig:interfering-trajectories} is shown in appendix \ref{appendix:secondary-trajectories} and is just an 
-    extension of the Python class in appendix \ref{appendix:bohmian-trajectories} to accommodate the new wave function $\Psi$.
-  %Other constants for the Gaussian function include: $a=36$, $c=1$, $\theta=\pi/4$ and $k_0=\pi\sqrt{2}/2$.
-  %These values are chosen to emphasize the characteristics of the wave packets.
-  %For example, a smaller value for $a$ shrinks the Gaussian wave packet and consequentially diminishes the effect on the Bohmian trajectories at the given resolution of Figure \ref{fig:interfering}. 
-  %Other desired behaviors contributed to the value of the constants such as having [TODO: KEEP THIS?] $\psi_A$ and $\psi_B$ interfere at time $t=0s$ instead of time $t=15s$.
-  %Granted these are subjected decisions but nonetheless have no effect on the general calculations of the Bohmian trajectories for this system.
+  The time $t$ spans from -15 seconds to 15 seconds with iterations of $1/100s$.
+  The particles are initially distributed with equidistant spacing with the bottom and top packets offset by a 1/2 step to avoid symmetry over the $y=0$ axis.
+  Plotting 100 trajectories takes approximately 5 minutes and 55 seconds.
+  Again, the calculations only find the $y$ coordinate of each particle since the $x$ coordinate is proportional to the time $t$. 
+  The Python code to generate Figure \ref{fig:interfering-trajectories} is shown in appendix \ref{appendix:secondary-trajectories} and is a 
+    subclass of the Python class in appendix \ref{appendix:bohmian-trajectories} that accommodates the new initial conditions and wave function $\Psi$.
 
-  %A set of random particles are initially distributed along the $t=-15s$ axis.
-  %In order to see the behavior of the Bohmian trajectories throughout the entire system the particles are distributed randomly, yet symmetrically, at values of $y$ between -30 and 30.
-  %Although, the distribution can be limited to any portion of the $y$ axis if desired.
-  %In regards to the computation time, a random set of fifty particles takes no longer then 15 seconds to calculate with the mentioned values above.
-
-  %[TODO: REMOVE SYM.]
   \begin{figure}[ht]
-    {\centering \includegraphics[scale=.4]{./imgs/interfering-trajectories.png} \\}
+    {\centering \includegraphics[scale=.5]{./imgs/100-bohmian-trajectories-b06f0d2cb50ffe27.png} \\}
     \caption{
+      % 60 particles, 1/100 dt and took 208.995403051 seconds
+      % 100 particles, 1/100 dt and took 355.211433172 seconds
       Bohmian trajectories plotted for wave function $\Psi$ describing two interfering Gaussian wave packets.
-      20 particles are initially distributed alone the $t=-15s$ axis ranging in values between -30 and 30.
-      The trajectories do not cross paths nor the $y=0$ axis.
+      100 particles are initially distributed with equidistant spacing on the $t=-15s$ axis.
+      The bottom and top packets are offset by a 1/2 step to prevent symmetry over the $y=0$ axis.
     }
     \label{fig:interfering-trajectories}
   \end{figure}
 
-  %The results are [TODO: INTRIGUING IS WRONG WORD] intriguing and plotted in Figure \ref{fig:interfering-trajectories}. 
   An instinctive interpretation of the interfering wave packets depicted in Figure \ref{fig:interfering} can lead one to assume that the two wave packets 
     head towards each other, interfere with each other, and then continue along their original path.
   The Bohmian trajectories show that as the wave packets $\psi_A$ and $\psi_B$ begin to interfere with one another the Bohmian trajectories begin detouring.
-  When the wave packets are fully superimposed at $t=0s$, the trajectories are almost parallel with the $t$ axis, never crossing the central line of symmetry at the $y=0$ axis. 
+  When the wave packets are fully superimposed at $t=0s$, the trajectories are almost parallel with the $t$ axis, never crossing the $y=0$ axis. 
   As $\psi_A$ and $\psi_B$ continue propagating forward, the trajectories eventually turn around and head back towards the upper or lower region they originated from;
     creating another symmetry along the $t=0$ axis.
-  This may indicate that the wave packets behave the same and just appear to continue along their original path.
-  %The axis at $y=0$ behaves similar to an asymptotic limit for the trajectories. 
+  This may indicate that the wave packets behave similarly and simply appear to continue along their original path.
   The familiar characteristics of Bohmian trajectories are still observed: the trajectories do not cross and veer from classical trajectories.
-  Also, regardless of the initial distribution of particles the trajectories follow the patterns illustrated in Figure \ref{fig:interfering-trajectories}.
-  %That is to say that the $y=0$ and $t=0$ axis are axis of symmetry for the trajectories, which in fact never cross the $y=0$ axis.
-
-  %In fact, if an initial particle is placed at $y=0$ it will propagate straight through the system as if the wave function does not exist.
-  %This is illustrated in Figure \ref{fig:interfering-center}.
-
-  %\begin{figure}
-  %  {\centering \includegraphics[scale=.3]{./imgs/interfering-center.png} \\}
-  %  \caption{
-  %    A single particle placed initially at $y=0$ yields a straight path through the system not at all being affected by if the wave function $\Psi$.
-  %  }
-  %  \label{fig:interfering-center}
-  %\end{figure}
-%
-%  Once again, the familiar characteristics of Bohmian trajectories are observed.
-%  The Bohmian trajectories show a stark contrast to the assumed behavior of the wave packets.
-%  Meaning, the trajectories do not continue on their initial direction after $t=0$ but in fact reverse it.
-%  Regardless of the initial distribution of particles, the trajectories follow the same basic pattern as plotted in Figure \ref{fig:interfering-trajectories}.
-%  Whichever side of the axis-of-symmetry the particle starts is where it remains throughout the system. 
-%  The $y=0$ and $t=0$ axis are axis of symmetry for the trajectories, which in fact never cross the $y=0$ axis.
-%  Furthermore, particles that initially start at $y=0$ will remain along this axis unimpeded.
+  Furthermore, the particle trajectories follow the pattern illustrated in Figure \ref{fig:interfering-trajectories} regardless of the initial distribution.
 
 \section{Conclusion}
 
-  %[TODO: REMEMBER THESE ARE NOT SEPARATE SYSTEM. SAME SYSTEM, RELATED SYSTEMS BUT DIFFERENT SETUPS]
   In conclusion, Bohmian trajectories were numerically calculated with Python 2.7.2.
   A fourth-order Runge-Kutta was implemented to numerically solve the differential equation (\ref{eq:trajectories}) that describes the trajectories.
-  Basic corroboration with known results was found regarding to the double-slit experiment.
-  The expected interference pattern was observed and the effects of the quantum potential were noticeable through the deviations in the trajectories from their classical counterparts.
+  Basic corroboration with known results was found and the expected interference patterns were observed.
+  The effects of the quantum potential were noticeable as well via the deviations in the trajectories from their classical counterparts.
   All the Python scripts are referenced in the appendix and have the NumPy, SymPy and Matplotlib packages as dependencies.
   Computation times were relatively quick and given the open-sourced foundation of Python and its scientific packages the results can be freely replicated.
-  %The first system being the double-slit experiment and the second being two interfering wave packets.
-  %Each system displays different trajectories but the core characteristics of the trajectories are similar.
-  %Python was the language of choice and proved sufficient in delivering the calculations and graphs necessary to investigate the two systems.
-  %Different initial distributions of particles were implemented and they all demonstrated unique trajectories that obeyed the characteristics of Bohmian trajectories and 
-  %  the reality of the double-slit experiment.
-
-  %In regards to the interfering wave packets, Bohmian trajectories were again discovered to obey their intrinsic characteristics.
-  %However, this had some unique consequences in the paths of the trajectories.
-  %Specifically, particles that initially start with positive $y$ coordinates would follow a trajectory that never cross the $y=0$ axis.
-  %Coordinates initially with negative $y$ values would follow [TODO: WHAT DOES THIS MEAN? KEEP IT?] the same behavior.
-  %Particles that initially started at $y=0$ would remain on the $y=0$ axis and never deviate from it.
-  %Again, the computation times were rather quick making higher precision modeling for this system possible as well.
-
-  %Although minor changes may have to be made to the code in this case.
-
-%  Bohmian mechanics offers a different perspective on modern quantum mechanic theory.
-%  By prescribing definite trajectories to the particles, the notion of wave-particle duality is omitted at the expense of the quantum potential being introduced.
-%  It is well known that the Bohmian perspective has not yet offered alternate answers or predictions, however,
-%    it does provide an alternative explanation of quantum mechanic behavior that is not completely foreign to the classical world.
-%  [TODO: REMOVE THE SUPERFULOUS LINE] It would then seem justified to continue investigating this alternative perspective of quantum mechanics.
-%  
-%  [todo: compare to current dBB stuff, that's what the conclusion should be about. talk about the python more. why it's good to use. debugging, syntax, accessible to anyone etc..]
-  
-
-  
 
 \pagebreak
 
