@@ -43,7 +43,7 @@ Z = wave(X,Y,t=0)
 contour(Z*conj(Z))
 
 ax = subplot(133)
-text(0.1, 0.9,"t=15s", 
+text(0.2, 0.9,"t=15s", 
         ha="center", va="center", transform=ax.transAxes)
 xlabel("x")
 ylabel("y")
