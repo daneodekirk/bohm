@@ -7,7 +7,7 @@ from pylab import *
 from random import getrandbits
 
 class Bohm:
-    def __init__(self,particles=20,plot=False,save=False,**kwargs):
+    def __init__(self,particles=200,plot=False,save=False,**kwargs):
         self.start = time.time()
 
         self.slitdistance = kwargs.get('slitdistance',1.)
@@ -23,12 +23,12 @@ class Bohm:
         self.st = self.slitwidth*(1+ (1j*t)/(2*self.slitwidth**2))
         self.N  = (2*pi*self.st**2)**-.25
 
-        inits = np.array([x for x in np.random.uniform(-1.5, 1.5, 500) 
+        inits = np.array([x for x in np.random.uniform(-1.5, 1.5, particles*2) 
                                     if x < -.5 or x > .5][:particles])
 
         self.inits     = kwargs.get('inits', inits)
         self.t0        = kwargs.get('t0',0)
-        self.tf        = kwargs.get('tf',1)
+        self.tf        = kwargs.get('tf',2)
 
         self.PSI = self.psi()
         # turn the symoblic functions into callable python functions
