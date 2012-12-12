@@ -16,7 +16,7 @@ y = arange(-13,13,.01)
 Y,T = meshgrid(y, t)
 Z = psi_y(Y,T)+psi_y(-Y,T)
 
-fig = figure()
+fig = figure(figsize=(17,10))
 suptitle("Imaginary surface over time of the wave function for a double slit system",
             fontsize=20)
 
@@ -24,7 +24,7 @@ ax = fig.gca(projection="3d")
 ax.set_zlim([-10,10])
 
 surf = ax.plot_surface(Y, T, imag(Z), cmap=cm.jet, linewidth=0, antialiased=False)
-ax.set_xlabel("x",fontsize=20)
+ax.set_xlabel("y",fontsize=20)
 ax.set_ylabel("t",fontsize=20)
 ax.set_zlabel(r"$\psi$",fontsize=30)
 ax.view_init(elev=36, azim=63) 
