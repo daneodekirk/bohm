@@ -58,15 +58,21 @@ class Bohm:
 
     def plot(self):
         figure(figsize=(12,10))
+        xlim(self.t0,self.tf)
         suptitle("Bohmian trajectories for %d particles" % len(self.inits), fontsize=20)
         xlabel("t")
         ylabel("y")
         for index,y0 in enumerate(self.inits):
+            x = []
+            y = []
             t = self.t0
             state = np.array([y0,0])
             while t < self.tf:
                 t, state = self.rk4(t,self.dt,state,self.trajectories)
-                plot(t,state[0],"o",markersize=1)
+                x.append(t)
+                y.append(state[0])
+            plot(x,y,color="black")
+            print "Completed trajectory %d completed" % index
 
         print "Completed in %s seconds" % str(time.time() - self.start)
         if self.save: 
